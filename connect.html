@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TON Connect</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
+</head>
+<body>
+    <h2>Подключите ваш TON кошелек</h2>
+    <button id="connect-button">Подключить кошелек</button>
+    <script>
+        const tonConnect = new TonConnect();
+
+        document.getElementById('connect-button').addEventListener('click', async () => {
+            try {
+                await tonConnect.connect({
+                    manifestUrl: 'https://your-domain.com/tonconnect-manifest.json', // Замените на URL вашего manifest.json
+                });
+                alert('Кошелек успешно подключен!');
+            } catch (e) {
+                console.error('Ошибка при подключении кошелька:', e);
+                alert('Не удалось подключить кошелек');
+            }
+        });
+    </script>
+</body>
+</html>
